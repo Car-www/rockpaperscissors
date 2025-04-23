@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+    <style>
+          body {
+           background-color: #282c34;
+           color: #ffffff;
+           font-family: Arial, sans-serif;
+           text-align: center;
+           padding: 30px;
+         }
+         h1 {
+           color: lightseagreen;
+           font-size: 2.5em;
+         }
+         h2 {
+           color: #6698d1;
+           margin: 20px 0 10px;
+         }
+         button {
+           background-color: #3e4451;
+           color: #ffffff;
+           border: none;
+           padding: 15px 25px;
+           margin: 10px;
+           font-size: 1.2em;
+           border-radius: 6px;
+           cursor: pointer;
+           transition: background-color 0.2s, transform 0.1s;
+         }
+         button:hover {
+           background-color: #5c6370;
+           transform: scale(1.05);
+         }
+         h1 {
+           color: yellow;
+           transition: background-color 1.5s;
+         }
+         h1:hover {
+          background-color: green
+         }
+         button:hover {
+      	background-color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <h2>Pick your move</h2>
+
+    <button onclick="play('rock')">Rock</button>
+    <button onclick="play('paper')">Paper</button>
+    <button onclick="play('scissors')">Scissors</button>
+    <h3 id="playerMove">You chose... ?</h3>
+    <h3 id="computerMove">Computer Chose... ?</h3>
+    <h2 id="result"></h2>
+
+    <script>
+      const moves = ['rock', 'paper', 'scissors'];
+
+      function play(playerMove) {
+        const computerMove = moves[Math.floor(Math.random() * 3)];
+
+        document.getElementById('playerMove').textContent = 'You chose: ' + playerMove;
+        document.getElementById('computerMove').textContent = 'Computer chose: ' + computerMove;
+
+        let result = '';
+        if (playerMove === computerMove) {
+          result = "It's a tie!";
+        } else if (
+          (playerMove === 'rock' && computerMove === 'scissors') ||
+          (playerMove === 'paper' && computerMove === 'rock') ||
+          (playerMove === 'scissors' && computerMove === 'paper')
+        ) {
+          result = "You win!";
+        } else {
+          result = "You lose!";
+        }
+
+        document.getElementById('result').textContent = result;
+      }
+    </script>
+  </body>
+</html>
